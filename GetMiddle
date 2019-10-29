@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str = "C sharpe";
+            string temp = "empty";
+            int len = Convert.ToInt32(str.Length);
+                if (len % 2 == 0)
+                    {
+                        temp = $"{str[(len / 2) - 1]}" + $"{str[len / 2]}";
+                    }
+                else
+                    {
+                        temp = $"{str[len / 2]}";
+                    }
+            Console.Write($"Длина строки равна: {len}");
+            Console.Write($"\nСреднее значение строки {temp}");
+            Console.ReadKey();
+        }
+    }
+}
