@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = "By using the string concatenation operator to create single string from any combination of String instances and string literals";
+            string[] arr = s.Split(new char[] { ' ' });                     // Инициализируем массив и заполняем его словами из нашей фразы(через разделитель пробел) 
+            string temp = arr[0];                                           // Инициализируем переменную(заносим предполагаемый минимум)  
+            int len = 0;                                                    // Переменная для длины наименьшего слова    
+            int count = 0;                                                  // Переменная для кол-ва пройденных итераций
+                for (int i = 1; i < arr.Length; i++)
+                    {
+                        if (arr[i].Length < temp.Length)
+                            {
+                                temp = arr[i];
+                                count = i; 
+                                break;
+                            }
+                    }
+            len = Convert.ToInt32(temp.Length);
+            string temp2 = "";                                              // Пременная для конкатенации одинаковых строк
+                for (int i = count; i < arr.Length; i++)                    // Цикл начинаем с того места, где закончили предыдущий
+                    {
+                        if (temp.Length == arr[i].Length)                   // <<Если длина слова такая же, как и у нашего минимума,    
+                            {                                               // то мы "конкатенируем"                             
+                                temp2 = temp2 + " " + arr[i];               // его в нашу переменную >>
+                            }
+                    }
+            
+            Console.Write($"\nСамое короткое слово(или слова) в вашей фразе \"{temp2}\" состоит(ят) из {len} букв");
+            Console.ReadKey();
+        }
+    }
+}
