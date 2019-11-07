@@ -1,0 +1,84 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Complexnumber
+{
+    class ComplexNum
+    {
+        double _real;
+        double _imagin;
+
+        public ComplexNum(double real, double imagin)
+        {
+            this._real = real;
+            this._imagin = imagin;
+        }
+
+        public void PrintComplexNumber()
+        {
+            if (_imagin < 0)
+            {
+                Console.WriteLine($"Your ComplexNumber is: {_real}" + $"{_imagin}" + "i\n"); ;
+            }
+            else
+            {
+                Console.WriteLine($"Your ComplexNumber is: {_real}" + "+" + $"{_imagin}" + "i\n");
+            }
+
+        }
+        public string GetRealPart()
+        {
+            string temp = $"{_real}";
+            return temp;
+        }
+        public string GetImaginPart()
+        {
+            string temp = $"{_imagin}" + "i";
+            return temp;
+        }
+
+        public ComplexNum Sum(ComplexNum num1)
+        {
+            ComplexNum temp = new ComplexNum(0, 0);
+            temp._real = this._real + num1._real;
+            temp._imagin = this._imagin + num1._imagin;
+            return temp;
+        }
+
+        public ComplexNum Subtr(ComplexNum num1)
+        {
+            ComplexNum temp = new ComplexNum(0, 0);
+            temp._real = this._real - num1._real;
+            temp._imagin = this._imagin - num1._imagin;
+            return temp;
+        }
+
+        public ComplexNum Mult(ComplexNum num1)
+        {
+            ComplexNum temp = new ComplexNum(0, 0);
+            temp._real = this._real * num1._real - this._imagin * num1._imagin;
+            temp._imagin = this._imagin * num1._real + this._real * num1._imagin;
+            return temp;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ComplexNum c1 = new ComplexNum(4, 7);
+            ComplexNum c2 = new ComplexNum(2, 8);
+            ComplexNum c3 = c1.Sum(c2); 
+            ComplexNum c4 = c1.Subtr(c2);
+            ComplexNum c5 = c1.Mult(c2);
+            string temp1 = c3.GetRealPart();
+            string temp2 = c3.GetImaginPart();
+            c3.PrintComplexNumber();
+            c4.PrintComplexNumber();
+            c5.PrintComplexNumber();
+            Console.ReadKey();
+        }
+    }
+}
