@@ -59,8 +59,8 @@ namespace Complexnumber
         public ComplexNum Mult(ComplexNum num1)
         {
             ComplexNum temp = new ComplexNum(0, 0);
-            temp._real = this._real * num1._real - this._imagin * num1._imagin;
-            temp._imagin = this._imagin * num1._real + this._real * num1._imagin;
+            temp._real = (this._real * num1._real) - (this._imagin * num1._imagin);
+            temp._imagin = (this._imagin * num1._real) + (this._real * num1._imagin);
             return temp;
         }
     }
