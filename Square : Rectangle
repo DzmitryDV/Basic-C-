@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Figure
+{
+    class Rectangle
+    {
+        private double _sideRec1;
+        private double _sideRec2;
+        public double FirstSideRec
+        {
+            get
+            {
+                return this._sideRec1;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Сторона не может быть отрицательной!");
+                }
+                this._sideRec1 = value;
+            }
+        }
+
+        public double SecondSideRec
+        {
+            get
+            {
+                return this._sideRec2;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Сторона не может быть отрицательной!");
+                }
+                this._sideRec2 = value;
+            }
+        }
+
+        public Rectangle(double sideRec1, double sideRec2)
+        {
+            this.FirstSideRec = sideRec1;
+            this.SecondSideRec = sideRec2;
+        }
+        public Rectangle(double sideRec1)
+        {
+            this.FirstSideRec = sideRec1;
+        }
+        public virtual double Area()
+        {
+            return this._sideRec1 * this._sideRec2;
+        }
+    }
+    class Square : Rectangle
+    {
+        private double _sideSqr;
+        public double FirstSideSqr
+        {
+            get
+            {
+                return this._sideSqr;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Сторона не может быть отрицательной!");
+                }
+                this._sideSqr = value;
+            }
+        }
+        public Square(double sideSqr) : base(sideSqr)
+        {
+            this.FirstSideSqr = sideSqr;
+        }
+        public override double Area()
+        {
+            return this._sideSqr * this._sideSqr;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle Rec1 = new Rectangle(4, 5);
+            double temp1 = Rec1.Area();
+            Square Sqr1 = new Square(4);
+            double temp2 = Sqr1.Area();
+            Console.Write("Площадь примоугольника: {0}", temp1);
+            Console.Write("\nПлощадь квадрата: {0}", temp2);
+            Console.ReadKey();
+        }
+    }
+}
