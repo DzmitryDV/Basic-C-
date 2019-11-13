@@ -63,6 +63,76 @@ namespace Complexnumber
             temp._imagin = (this._imagin * num1._real) + (this._real * num1._imagin);
             return temp;
         }
+
+        // Далее переопределение методов
+
+        public override string ToString()
+        {
+            if (_imagin < 0)
+            {
+                return $"{ _real}" + $"{ _imagin}" + "i\n".ToString();
+            }
+            else
+            {
+                return $"{ _real}" + "+" + $"{ _imagin}" + "i\n".ToString();
+            }
+            
+        }
+
+        public override bool Equals(object obj)
+            {
+                ComplexNum num1 = obj as ComplexNum;
+                    if ((num1.GetType() == obj.GetType()) && (num1._real == this._real) && (num1._imagin == this._imagin))
+                        {
+                            return true;
+                        }
+                    else
+                        {
+                            return false;
+                        }
+            }
+
+        // Далее перегрузка операторов
+
+        public static bool operator == (ComplexNum num1, ComplexNum num2)
+        {
+            if ((num1._real == num2._real) && (num1._imagin == num2._imagin))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator !=(ComplexNum num1, ComplexNum num2)
+        {
+            if ((num1._real != num2._real) || (num1._imagin != num2._imagin))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        public static ComplexNum operator +(ComplexNum num1, ComplexNum num2)
+        {
+            ComplexNum num3 = new ComplexNum(0, 0);
+            num3._real = num1._real + num2._real;
+            num3._imagin = num1._imagin + num2._imagin;
+            return num3;
+        }
+
+        public static ComplexNum operator -(ComplexNum num1, ComplexNum num2)
+        {
+            ComplexNum num3 = new ComplexNum(0, 0);
+            num3._real = num1._real - num2._real;
+            num3._imagin = num1._imagin - num2._imagin;
+            return num3;
+        }
     }
     class Program
     {
