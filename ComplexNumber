@@ -133,6 +133,11 @@ namespace Complexnumber
             num3._imagin = num1._imagin - num2._imagin;
             return num3;
         }
+        
+        public override int GetHashCode()
+        {
+            return _real.GetHashCode() ^ _imagin.GetHashCode();
+        }
     }
     class Program
     {
